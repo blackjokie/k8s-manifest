@@ -3,21 +3,20 @@ kind: Application
 metadata:
   name: development-ingress-nginx
   namespace: argo-system
-  # finalizers:
-  #   - resources-finalizer.argocd.argoproj.io
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: development
-
   source:
     repoURL: https://github.com/blackjokie/k8s-manifest
     targetRevision: HEAD
     path: charts/development-ingress-nginx/internal-nginx/
-    directory:
-      recurse: true  # penting: ini agar semua subfolder dibaca
+    # directory:
+    #   recurse: true  # penting: ini agar semua subfolder dibaca
     helm:
       releaseName: ingress-nginx
-      valuesFile:
-        - ../../../releases/development/development-ingress-nginx/releases.yaml
+      valueFiles:
+        - ../../releases/development/development-ingress-nginx/releases.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: development-ingress-nginx

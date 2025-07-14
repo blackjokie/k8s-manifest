@@ -12,9 +12,17 @@ spec:
     #   server: https://kubernetes.default.svc
     - namespace: 'development-*'
       server: https://kubernetes.default.svc
+
   clusterResourceWhitelist:
     - group: ''
       kind: Namespace
+    - group: 'rbac.authorization.k8s.io'
+      kind: ClusterRole
+    - group: 'rbac.authorization.k8s.io'
+      kind: ClusterRoleBinding
+    - group: 'networking.k8s.io'
+      kind: IngressClass   # ✅ IZINKAN IngressClass
+
   namespaceResourceWhitelist:
     - group: ''
       kind: '*'
@@ -22,6 +30,11 @@ spec:
       kind: '*'
     - group: 'networking.k8s.io'
       kind: '*'
+    - group: 'rbac.authorization.k8s.io'
+      kind: Role
+    - group: 'rbac.authorization.k8s.io'
+      kind: RoleBinding
+
   roles:
     - name: developer
       description: Developer access
