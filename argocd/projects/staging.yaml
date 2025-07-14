@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: staging
-  namespace: argocd-system
+  namespace: argo-system
 spec:
   description: Application workloads
   sourceRepos:
