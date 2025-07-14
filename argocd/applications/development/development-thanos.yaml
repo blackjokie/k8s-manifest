@@ -3,14 +3,14 @@ kind: Application
 metadata:
   name: development-thanos
   namespace: argo-system
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
+  # finalizers:
+  #   - resources-finalizer.argocd.argoproj.io
 spec:
   project: development
   source:
-    repoURL: https://github.com/blackjokie/k8s-manifests
+    repoURL: https://github.com/blackjokie/k8s-manifest
     targetRevision: HEAD
-    path: apps/development/development-thanos
+    path: releases/development/development-thanos/
     directory:
       recurse: true  # penting: ini agar semua subfolder dibaca
   destination:

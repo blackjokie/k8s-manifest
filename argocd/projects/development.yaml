@@ -6,11 +6,11 @@ metadata:
 spec:
   description: Application workloads
   sourceRepos:
-    - 'https://github.com/blackjokie/k8s-manifests'
+    - 'https://github.com/blackjokie/k8s-manifest'
   destinations:
     # - namespace: 'app-*'
     #   server: https://kubernetes.default.svc
-    - namespace: 'default'
+    - namespace: 'development-*'
       server: https://kubernetes.default.svc
   clusterResourceWhitelist:
     - group: ''

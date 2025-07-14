@@ -8,9 +8,9 @@ metadata:
 spec:
   project: production
   source:
-    repoURL: https://github.com/blackjokie/k8s-manifests
+    repoURL: https://github.com/blackjokie/k8s-manifest
     targetRevision: HEAD
-    path: apps/production/production-thanos
+    path: releases/production/production-thanos
     directory:
       recurse: true  # penting: ini agar semua subfolder dibaca
   destination:
