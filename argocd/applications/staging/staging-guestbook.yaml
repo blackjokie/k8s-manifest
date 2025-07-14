@@ -8,9 +8,9 @@ metadata:
 spec:
   project: staging
   source:
-    repoURL: https://github.com/blackjokie/k8s-manifests
+    repoURL: https://github.com/blackjokie/k8s-manifest
     targetRevision: HEAD
-    path: apps/staging/staging-guestbook
+    path: releases/staging/staging-guestbook
     directory:
       recurse: true  # penting: ini agar semua subfolder dibaca
   destination:

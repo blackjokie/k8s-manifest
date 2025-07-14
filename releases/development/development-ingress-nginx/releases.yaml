@@ -1,0 +1,29 @@
+controller:
+  admissionWebhooks:
+    enabled: false
+  config:
+    server-snippet: |
+      location ~* "^/metrics" {
+              deny all;
+              return 403;
+            }
+    use-forwarded-headers: "true"
+  ingressClass: internal-nginx
+  ingressClassResource:
+    controllerValue: k8s.io/internal-ingress-nginx
+    name: internal-nginx
+  kind: DaemonSet
+  podAnnotations:
+    ad.datadoghq.com/controller.logs: '[{"service": "controller", "source": "nginx-ingress-controller"}]'
+  service:
+    ipFamilyPolicy: "RequireDualStack"
+    ipFamilies: 
+      - IPv4
+      - IPv6
+    external:
+      enabled: false
+    internal:
+      annotations:
+        networking.gke.io/load-balancer-type: Internal
+      enabled: true
+      externalTrafficPolicy: Local

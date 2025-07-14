@@ -8,9 +8,9 @@ metadata:
 spec:
   project: production
   source:
-    repoURL: https://github.com/blackjokie/k8s-manifests
+    repoURL: https://github.com/blackjokie/k8s-manifest
     targetRevision: HEAD
-    path: apps/production/production-guestbook
+    path: releases/production/production-guestbook
     directory:
       recurse: true  # penting: ini agar semua subfolder dibaca
   destination:
