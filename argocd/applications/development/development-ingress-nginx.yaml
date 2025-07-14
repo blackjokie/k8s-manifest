@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://github.com/blackjokie/k8s-manifest
     targetRevision: HEAD
-    path: charts/development-ingress-nginx/
+    path: charts/development-ingress-nginx/internal-nginx/
     directory:
       recurse: true  # penting: ini agar semua subfolder dibaca
     helm:
