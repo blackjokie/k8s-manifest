@@ -13,17 +13,14 @@ controller:
     controllerValue: k8s.io/internal-ingress-nginx
     name: internal-nginx
   kind: DaemonSet
-  podAnnotations:
-    ad.datadoghq.com/controller.logs: '[{"service": "controller", "source": "nginx-ingress-controller"}]'
   service:
-    ipFamilyPolicy: "RequireDualStack"
     ipFamilies: 
       - IPv4
-      - IPv6
     external:
       enabled: false
     internal:
       annotations:
-        networking.gke.io/load-balancer-type: Internal
+	service.beta.kubernetes.io/aws-load-balancer-scheme: internal
+	service.beta.kubernetes.io/aws-load-balancer-type: nlb
       enabled: true
       externalTrafficPolicy: Local
