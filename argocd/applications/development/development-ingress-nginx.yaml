@@ -2,7 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: development-ingress-nginx
-  # namespace: argo-system
   namespace: argocd
   # finalizers:
   #   - resources-finalizer.argocd.argoproj.io
@@ -13,15 +12,16 @@ spec:
     repoURL: https://github.com/blackjokie/k8s-manifest
     targetRevision: HEAD
     path: charts/development-ingress-nginx/internal-nginx/
-    directory:
-      recurse: true  # penting: ini agar semua subfolder dibaca
+    # Remove the directory section when using Helm
     helm:
       releaseName: ingress-nginx
       valueFiles:
         - ../../../releases/development/development-ingress-nginx/releases.yaml
+        
   destination:
     server: https://kubernetes.default.svc
     namespace: development-ingress-nginx
+    
   syncPolicy:
     automated:
       prune: true
