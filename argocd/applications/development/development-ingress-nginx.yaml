@@ -2,7 +2,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: development-ingress-nginx
-  namespace: argo-system
+  # namespace: argo-system
+  namespace: argocd
   # finalizers:
   #   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -16,7 +17,7 @@ spec:
       recurse: true  # penting: ini agar semua subfolder dibaca
     helm:
       releaseName: ingress-nginx
-      valuesFile:
+      valueFiles:
         - ../../../releases/development/development-ingress-nginx/releases.yaml
   destination:
     server: https://kubernetes.default.svc
