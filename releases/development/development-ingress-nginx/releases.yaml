@@ -12,7 +12,7 @@ controller:
   ingressClassResource:
     controllerValue: k8s.io/internal-ingress-nginx
     name: internal-nginx
-  kind: DaemonSet
+  kind: Deployment
   service:
     ipFamilies: 
       - IPv4
@@ -20,7 +20,7 @@ controller:
       enabled: false
     internal:
       annotations:
-	service.beta.kubernetes.io/aws-load-balancer-scheme: internal
-	service.beta.kubernetes.io/aws-load-balancer-type: nlb
+	      service.beta.kubernetes.io/aws-load-balancer-scheme: internal
+	      service.beta.kubernetes.io/aws-load-balancer-type: nlb
       enabled: true
       externalTrafficPolicy: Local
