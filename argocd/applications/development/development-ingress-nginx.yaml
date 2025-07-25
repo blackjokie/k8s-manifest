@@ -3,11 +3,10 @@ kind: Application
 metadata:
   name: development-ingress-nginx
   namespace: argocd
-  # finalizers:
-  #   - resources-finalizer.argocd.argoproj.io
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
-  project: development
-
+  project: default
   source:
     repoURL: https://github.com/blackjokie/k8s-manifest
     targetRevision: HEAD
@@ -16,12 +15,10 @@ spec:
     helm:
       releaseName: ingress-nginx
       valueFiles:
-        - ../../../releases/development/development-ingress-nginx/releases.yaml
-        
+        - ../../../releases/development/development-ingress-nginx/releases.yaml     
   destination:
     server: https://kubernetes.default.svc
-    namespace: development-ingress-nginx
-    
+    namespace: development-ingress-nginx 
   syncPolicy:
     automated:
       prune: true
