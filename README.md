@@ -1,1 +1,1 @@
-# k8s-manifest
+# Example Manifest for ArgoCD
